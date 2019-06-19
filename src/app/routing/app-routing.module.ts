@@ -27,7 +27,7 @@ const routes: Routes = [
     { path: 'users', loadChildren: './../users/users.module#UsersModule', canActivate: [AuthorizationRouteGuard] },
     { path: 'contact', loadChildren: './../contact/contact.module#ContactModule', canActivate: [LoginRouteGuard] },
     { path: 'group', loadChildren: './../group/group.module#GroupModule', canActivate: [LoginRouteGuard] },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: '/about', pathMatch: 'full' },
     {
         path: 'home',
         loadChildren: './../home/home.module#HomeModule'
