@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://www.zdslogic-development.com:8080/ng7-articles-server/api'
+  api_url: 'http://www.zdslogic-development.com:8080/ng8-spring-server/api'
 };
 
 /*
