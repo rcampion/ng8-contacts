@@ -1,0 +1,31 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+        <mat-card-title>User Details</mat-card-title>
+        <mat-card-content>
+          <div fxLayout="column wrap" fxLayoutGap="40px">
+            <div fxLayout="row wrap" fxFlex>
+              <div fxFlex><strong>First name:</strong></div>
+              <div fxFlex>{{user?.firstName}}</div>
+            </div>
+
+            <div fxLayout="row wrap" fxFlex>
+              <div fxFlex><strong>Last name:</strong></div>
+              <div fxFlex>{{user?.lastName}}</div>
+            </div>
+      
+          </div>
+        </mat-card-content>
+
+        <!--
+        <mat-card-actions>
+          <mat-form-field>
+            <mat-select placeholder="Show accounts" (selectionChange)="onChange($event)">
+              <mat-option *ngFor="let opt of selectOptions" [value]="opt.value">
+                {{opt.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-card-actions>
+        -->
+      </mat-card>
+</section>

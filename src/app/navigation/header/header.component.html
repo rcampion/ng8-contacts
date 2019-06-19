@@ -1,0 +1,104 @@
+<nav class="navbar navbar-light">
+  <div class="container">
+<!--
+    <a class="navbar-brand" routerLink="/">conduit</a>
+-->
+    <!-- Show this for logged out users -->
+    <ul *appShowAuthed="false"
+      class="nav navbar-nav pull-xs-right">
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/">
+          Home
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/login"
+          routerLinkActive="active">
+          Sign in
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/register"
+          routerLinkActive="active">
+          Sign up
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- Show this for logged in users -->
+    <ul *appShowAuthed="true"
+      class="nav navbar-nav pull-xs-right">
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          Home
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/settings"
+          routerLinkActive="active">
+          <i class="ion-gear-a"></i>&nbsp;Settings
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"
+          [routerLink]="['/profile', currentUser.userName]"
+          routerLinkActive="active">
+          <img [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
+          {{ currentUser.userName }}
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+<mat-toolbar color="primary">
+<!--  <div fxHide.gt-xs> -->
+  <div>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div>
+    <a routerLink="/home">Home</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li>
+        <a routerLink="/user-contacts">My Contacts</a>
+      </li>
+      <li>
+        <a routerLink="/contact/contacts">All Contacts</a>
+      </li>
+      <li>
+        <a routerLink="/group/groups">Groups</a>
+      </li>
+      <li *ngIf="userService.isAuthorized(['ROLE_ADMIN'])" class="nav-item">
+        <a class="nav-link" routerLink="users/users">Users</a>
+      </li>
+<!--
+      <li *ngIf="!userService.isUserAuthenticated()" class="nav-item">
+        <a class="nav-link" routerLink="login">Login</a>
+      </li>
+      <li *ngIf="userService.isUserAuthenticated()" class="nav-item">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+-->
+    </ul>
+  </div>
+</mat-toolbar>

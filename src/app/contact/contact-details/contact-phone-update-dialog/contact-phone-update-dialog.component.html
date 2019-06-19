@@ -1,0 +1,30 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Update phone</mat-card-title>
+    <form [formGroup]="phoneForm" autocomplete="off" novalidate (ngSubmit)="updatePhone(phoneForm.value)" fxLayout="column wrap"
+      fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-card-content>
+
+        <mat-form-field>
+          <input matInput type="phone" placeholder="Phone" formControlName="phone" id="phone">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('phone', 'required')">Phone is required</mat-error>
+        </mat-form-field>
+<br />
+        <mat-form-field>
+          <mat-select placeholder="Phone Type" formControlName="phoneKind" id="phoneKind">
+            <mat-option *ngFor="let phoneKind of phoneTypes" [value]="phoneKind.value">
+              {{phoneKind.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions align="center">
+        <button mat-raised-button color="primary" [disabled]="!phoneForm.valid">Update</button>
+        <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>
+

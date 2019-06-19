@@ -1,0 +1,23 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Create role</mat-card-title>
+    <form [formGroup]="authorityForm" autocomplete="off" novalidate (ngSubmit)="createAuthority(authorityForm.value)" fxLayout="column wrap"
+      fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-card-content>
+
+        <mat-form-field>
+          <mat-select placeholder="Role Type" formControlName="authority" id="authority">
+            <mat-option *ngFor="let authorityKind of authorityTypes" [value]="authorityKind.viewValue">
+              {{authorityKind.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions align="center">
+        <button mat-raised-button color="primary" [disabled]="!authorityForm.valid">Create</button>
+        <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>

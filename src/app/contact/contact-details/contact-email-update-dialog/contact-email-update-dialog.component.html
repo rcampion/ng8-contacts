@@ -1,0 +1,29 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Update email</mat-card-title>
+    <form [formGroup]="emailForm" autocomplete="off" novalidate (ngSubmit)="updateEMail(emailForm.value)" fxLayout="column wrap"
+      fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-card-content>
+
+        <mat-form-field>
+          <input matInput type="email" placeholder="EMail" formControlName="email" id="email">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('email', 'required')">EMail is required</mat-error>
+        </mat-form-field>
+<br />
+        <mat-form-field>
+          <mat-select placeholder="EMail Type" formControlName="emailKind" id="emailKind">
+            <mat-option *ngFor="let emailKind of emailTypes" [value]="emailKind.value">
+              {{emailKind.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions align="center">
+        <button mat-raised-button color="primary" [disabled]="!emailForm.valid">Update</button>
+        <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>

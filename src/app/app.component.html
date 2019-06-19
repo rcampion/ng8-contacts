@@ -1,0 +1,21 @@
+<app-layout>
+<h1>
+	<a href="http://www.zdslogic.com" target="_blank"> <img
+		src="assets/ZdsLogic_Technologies_Small.png"
+		alt="ZdsLogic Technologies">
+	</a>
+</h1>
+  <mat-sidenav-container>
+    <mat-sidenav mode='side' #sidenav role="navigation">
+      <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+      <main>
+        <router-outlet></router-outlet>
+        <app-error></app-error>
+        <app-footer></app-footer>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</app-layout>

@@ -1,0 +1,40 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="userForm" autocomplete="off" novalidate fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+
+
+      <mat-card-content>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="User Name" formControlName="userName" id="userName">
+        </mat-form-field>
+
+        <br/>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="First Name" formControlName="firstName" id="firstName">
+        </mat-form-field>
+
+        <br/>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="Last Name" formControlName="lastName" id="lastName">
+        </mat-form-field>
+
+        <br/>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" formControlName="password" id="password" type="password" name="password" required>
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="register()" color="primary">Register</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>

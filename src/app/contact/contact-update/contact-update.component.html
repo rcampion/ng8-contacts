@@ -1,0 +1,50 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Update contact</mat-card-title>
+    <form [formGroup]="contactForm" autocomplete="off" novalidate (ngSubmit)="updateContact(contactForm.value)" fxLayout="column wrap"
+      fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-card-content>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="First Name" formControlName="firstName" id="firstName">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('firstName', 'required')">First Name is required</mat-error>
+          <mat-error *ngIf="hasError('firstName', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+<br/>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Last Name" formControlName="lastName" id="lastName">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('lastName', 'required')">Last Name is required</mat-error>
+          <mat-error *ngIf="hasError('lastName', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+<br/>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Company" formControlName="company" id="company">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('company', 'required')">Company is required</mat-error>
+          <mat-error *ngIf="hasError('company', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+<br/>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Title" formControlName="title" id="title">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('title', 'required')">Title is required</mat-error>
+          <mat-error *ngIf="hasError('title', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions align="center">
+        <button mat-raised-button color="primary" [disabled]="!contactForm.valid">Update</button>
+        <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+
+
+</section>
+
+<app-contact-email-list> </app-contact-email-list>
+<br />
+<app-contact-phone-list> </app-contact-phone-list>
+

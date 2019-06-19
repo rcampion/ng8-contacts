@@ -1,0 +1,34 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Update user</mat-card-title>
+    <form [formGroup]="userForm" autocomplete="off" novalidate (ngSubmit)="updateUser(userForm.value)" fxLayout="column wrap"
+      fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-card-content>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="First Name" formControlName="firstName" id="firstName">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('firstName', 'required')">First Name is required</mat-error>
+          <mat-error *ngIf="hasError('firstName', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+<br/>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Last Name" formControlName="lastName" id="lastName">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('lastName', 'required')">Last Name is required</mat-error>
+          <mat-error *ngIf="hasError('lastName', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+<br/>        
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" formControlName="password" id="password" type="password" name="password" required>
+        </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions align="center">
+        <button mat-raised-button color="primary" [disabled]="!userForm.valid">Update</button>
+        <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>
+<app-user-authorities-list></app-user-authorities-list>
