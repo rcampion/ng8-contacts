@@ -7,12 +7,12 @@ import { UsersService } from '../core/services/users.service';
 })
 export class IsAuthorizedDirective implements OnInit {
     @Input('appIsAuthorized') role: string;
-    constructor(private _elementRef: ElementRef, private loginService: UsersService) {
+    constructor(private elementRef: ElementRef, private loginService: UsersService) {
 
     }
     ngOnInit(): void {
         if (this.role && this.role.trim() !== '' && !this.loginService.isAuthorized([this.role])) {
-            const el: HTMLElement = this._elementRef.nativeElement;
+            const el: HTMLElement = this.elementRef.nativeElement;
             el.parentNode.removeChild(el);
         }
     }
