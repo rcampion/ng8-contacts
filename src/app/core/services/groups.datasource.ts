@@ -6,8 +6,7 @@ import { GroupsService } from './groups.service';
 import { BehaviorSubject } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { PaginationPage, PaginationPropertySort } from '../interface/pagination';
+import { PaginationPropertySort } from '../interface/pagination';
 
 export class GroupsDataSource implements DataSource<Group> {
 
@@ -16,8 +15,6 @@ export class GroupsDataSource implements DataSource<Group> {
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
     public loading$ = this.loadingSubject.asObservable();
-
-    public paginationPage: Object;
 
     public total = 0;
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { PaginationPage, PaginationPropertySort } from '../interface/pagination';
+import { PaginationPropertySort } from '../interface/pagination';
 import { map , catchError } from 'rxjs/operators';
 import { Contact } from '../interface/contact.model';
 import { ErrorHandlerService } from './error-handler.service';

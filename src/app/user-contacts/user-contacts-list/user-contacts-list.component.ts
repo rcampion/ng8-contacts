@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, AfterViewInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { debounceTime, distinctUntilChanged, startWith, tap, delay } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { merge } from 'rxjs';
 import { fromEvent } from 'rxjs';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
@@ -9,7 +9,6 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { UserContact } from '../../core/interface/user-contact.model';
 import { UserContactsDataSource } from '../../core/services/user-contacts.datasource';
 import { ContactsService } from '../../core/services/contacts.service';
-import { PaginationPage } from '../../core/interface/pagination';
 import { ErrorHandlerService } from '../../core/services/error-handler.service';
 import { UserContactsSelectionDialogComponent } from './../user-contacts-selection-dialog/user-contacts-selection-dialog.component';
 import { UsersService } from '../../core/services/users.service';
@@ -28,7 +27,7 @@ export class UserContactsListComponent implements OnInit, AfterViewInit {
     loginService: UsersService;
 
     public displayedColumns = ['firstName', 'lastName', 'company', 'details', 'update', 'delete'];
-    // public dataSource = new MatTableDataSource<UserContact>();
+
     dataSource: UserContactsDataSource;
 
     @ViewChild(MatSort, {static:false}) sort: MatSort;

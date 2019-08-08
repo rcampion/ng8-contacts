@@ -6,8 +6,7 @@ import { UsersService } from './users.service';
 import { BehaviorSubject } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { PaginationPage, PaginationPropertySort } from '../interface/pagination';
+import { PaginationPropertySort } from '../interface/pagination';
 import { ErrorHandlerService } from './error-handler.service';
 
 export class UsersDataSource implements DataSource<User> {
@@ -17,8 +16,6 @@ export class UsersDataSource implements DataSource<User> {
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
     public loading$ = this.loadingSubject.asObservable();
-
-    public paginationPage: Object;
 
     public total = 0;
 

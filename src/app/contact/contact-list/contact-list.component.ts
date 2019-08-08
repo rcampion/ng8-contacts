@@ -43,7 +43,7 @@ export class ContactListComponent implements OnInit, AfterViewInit {
 
     pageNumber: number;
 
-    page: PaginationPage<any>;
+    // page: PaginationPage<any>;
 
 
     // tslint:disable-next-line:max-line-length

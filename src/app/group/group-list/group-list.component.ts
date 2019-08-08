@@ -1,15 +1,14 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatSort, MatPaginator } from '@angular/material';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { Group } from '../../core/interface/group.model';
 import { GroupsDataSource } from '../../core/services/groups.datasource';
 import { GroupsService } from '../../core/services/groups.service';
-import { PaginationPage } from '../../core/interface/pagination';
 import { ErrorHandlerService } from '../../core/services/error-handler.service';
 import { Router } from '@angular/router';
 import { GroupDeleteDialogComponent } from './../group-delete/group-delete-dialog.component';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
-import { debounceTime, distinctUntilChanged, startWith, tap, delay } from 'rxjs/operators';
+
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { merge } from 'rxjs';
 import { fromEvent } from 'rxjs';
 
@@ -23,14 +22,15 @@ export class GroupListComponent implements OnInit, AfterViewInit {
     public displayedColumns = ['groupName', 'groupDescription', 'details', 'update', 'delete'];
     // public dataSource = new MatTableDataSource<Group>();
     dataSource: GroupsDataSource;
-    @ViewChild(MatSort, {static:false}) sort: MatSort;
-    @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
-    @ViewChild('input', {static:false}) input: ElementRef;
+    @ViewChild(MatSort, {static: false}) sort: MatSort;
+    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+    @ViewChild('input', {static: false}) input: ElementRef;
     currentGroup: Group;
 
     groupsLength = 0;
 
     sortProperty = '';
+
     private dialogConfig;
 
     deleteGroupDialogRef: MatDialogRef<GroupDeleteDialogComponent>;

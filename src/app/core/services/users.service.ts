@@ -4,7 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { PaginationPage, PaginationPropertySort } from '../interface/pagination';
+import { PaginationPropertySort } from '../interface/pagination';
 import { map, catchError } from 'rxjs/operators';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { User } from './../models/user';
@@ -36,7 +36,6 @@ export class UsersService {
 
     public isAuthenticated = this.isAuthenticatedSubject.asObservable();
 
-    paginationPage: Object;
     total = 0;
 
     constructor(private http: HttpClient,
@@ -47,7 +46,10 @@ export class UsersService {
 
         private errorService: ErrorService,
 
-        private accountEventService: AccountEventsService,
+		//private errorHandlerService: ErrorHandlerService,
+
+		private accountEventService: AccountEventsService,
+		
         private router: Router) { }
 
     public getData = (route: string) => {
@@ -100,7 +102,7 @@ export class UsersService {
 
         }).pipe(
             map(res => res),
- //           catchError(error => { this.errorHandlerService.handleError(error); return Observable.throw(error.statusText); })
+            // catchError(error => { this.errorHandlerService.handleError(error); return Observable.throw(error.statusText); })
 
         );
     }

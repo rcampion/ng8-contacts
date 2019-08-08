@@ -24,7 +24,7 @@ const routes: Routes = [
     { path: 'email/:id', component: EmailComponent },
     { path: 'password', component: PasswordComponent, canActivate: [LoginRouteGuard] },
     { path: 'user-contacts', component: UserContactsListComponent, canActivate: [LoginRouteGuard] },
-    { path: 'users', loadChildren: './../users/users.module#UsersModule', canActivate: [AuthorizationRouteGuard] },
+    { path: 'users', loadChildren: './../users/users.module#UsersModule', canActivate: [LoginRouteGuard] },
     { path: 'contact', loadChildren: './../contact/contact.module#ContactModule', canActivate: [LoginRouteGuard] },
     { path: 'group', loadChildren: './../group/group.module#GroupModule', canActivate: [LoginRouteGuard] },
     { path: '', redirectTo: '/about', pathMatch: 'full' },

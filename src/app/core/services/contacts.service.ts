@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { PaginationPage, PaginationPropertySort } from '../interface/pagination';
+import { PaginationPropertySort } from '../interface/pagination';
 import { map, catchError } from 'rxjs/operators';
 import { Contact } from '../interface/contact.model';
 import { ErrorHandlerService } from './error-handler.service';
@@ -11,7 +11,7 @@ import { ErrorHandlerService } from './error-handler.service';
     providedIn: 'root'
 })
 export class ContactsService {
-    paginationPage: Object;
+
     total = 0;
 
     constructor(private http: HttpClient,
@@ -19,16 +19,6 @@ export class ContactsService {
 
     public getData = (route: string) => {
         return this.http.get(this.createCompleteRoute(route, environment.api_url));
-    }
-    // , headers: this.generateHeaders()
-    public getDataPage = (route: string, page: number, pageSize: number, sort: PaginationPropertySort) => {
-        // , responseType: 'application/json'
-        const params: any = { page: page, size: pageSize, headers: this.generateHeaders(), observe: 'body' };
-        if (sort != null) {
-            params.sort = sort.property + ',' + sort.direction;
-        }
-        return this.http.get<PaginationPage<any>>(this.createCompleteRoute(route, environment.api_url), params);
-        //        return this.http.get(this.createCompleteRoute(route, environment.api_url), params);
     }
 
     public create = (route: string, body) => {

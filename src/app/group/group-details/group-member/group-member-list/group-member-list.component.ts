@@ -1,10 +1,9 @@
 import { Component, Inject, OnInit, AfterViewInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatSort, MatPaginator } from '@angular/material';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { GroupMember } from '../../../../core/interface/group-member.model';
 import { GroupMembersDataSource } from '../../../../core/services/group-members.datasource';
 import { GroupsService } from '../../../../core/services/groups.service';
-import { PaginationPage } from '../../../../core/interface/pagination';
 import { ErrorHandlerService } from '../../../../core/services/error-handler.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -16,7 +15,6 @@ import { GroupMemberSelectionDialogComponent } from './../group-member-selection
 
 import { ContactDeleteDialogComponent } from './../../../../contact/contact-delete/contact-delete-dialog.component';
 
-
 @Component({
     selector: 'app-group-member-list',
     templateUrl: './group-member-list.component.html',
@@ -27,9 +25,10 @@ export class GroupMemberListComponent implements OnInit, AfterViewInit {
     groupId: number;
 
     public displayedColumns = ['firstName', 'lastName', 'company', 'details', 'update', 'delete'];
-    // public dataSource = new MatTableDataSource<GroupMember>();
+ 
     dataSource: GroupMembersDataSource;
-    @ViewChild(MatSort, {static:false}) sort: MatSort;
+
+	@ViewChild(MatSort, {static:false}) sort: MatSort;
     @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
     @ViewChild('input', {static:false}) input: ElementRef;
 

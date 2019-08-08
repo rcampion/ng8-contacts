@@ -1,15 +1,13 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { debounceTime, distinctUntilChanged, startWith, tap, delay } from 'rxjs/operators';
 import { merge } from 'rxjs';
 import { fromEvent } from 'rxjs';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatSort, MatPaginator } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { User } from '../../core/models/user';
 import { UsersDataSource } from '../../core/services/users.datasource';
 import { UsersService } from '../../core/services/users.service';
-import { PaginationPage } from '../../core/interface/pagination';
 import { ErrorHandlerService } from '../../core/services/error-handler.service';
 import { UserDeleteDialogComponent } from './../user-delete/user-delete-dialog.component';
 
@@ -23,14 +21,15 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     public displayedColumns = ['userName', 'firstName', 'lastName', 'details', 'update', 'delete'];
     // public dataSource = new MatTableDataSource<Group>();
     dataSource: UsersDataSource;
-    @ViewChild(MatSort, {static:false}) sort: MatSort;
-    @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
-    @ViewChild('input', {static:false}) input: ElementRef;
+    @ViewChild(MatSort, {static: false}) sort: MatSort;
+    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+    @ViewChild('input', {static: false}) input: ElementRef;
     currentUser: User;
 
     usersLength = 0;
 
-    sortProperty = '';
+	sortProperty = '';
+	
     private dialogConfig;
 
     // tslint:disable-next-line:max-line-length
