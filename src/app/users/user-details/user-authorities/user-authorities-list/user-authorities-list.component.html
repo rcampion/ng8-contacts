@@ -6,7 +6,7 @@
 
 </div>
 
-<table mat-table [dataSource]="dataSource" matSort>
+<table class="table table-striped" mat-table [dataSource]="dataSource" matSort>
   <ng-container matColumnDef="authority">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
     <td mat-cell *matCellDef="let element"> {{element.authority}} </td>
