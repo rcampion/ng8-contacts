@@ -9,7 +9,7 @@ import { SuccessDialogComponent } from '../../shared/dialogs/success-dialog/succ
 import { ErrorHandlerService } from '../../core/services/error-handler.service';
 
 @Component({
-    selector: 'app-group-update',
+    selector: 'app-user-update',
     templateUrl: './user-update.component.html',
     styleUrls: ['./user-update.component.css']
 })

@@ -61,7 +61,7 @@ export class UsersService {
 
     public update = (route: string, body) => {
         // this.setAuth(body);
-        this.currentUserSubject.next(body);
+        // this.currentUserSubject.next(body);
         return this.http.put(this.createCompleteRoute(route, environment.api_url), body, this.generateHeaders());
     }
 
