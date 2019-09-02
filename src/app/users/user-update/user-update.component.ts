@@ -9,7 +9,7 @@ import { SuccessDialogComponent } from '../../shared/dialogs/success-dialog/succ
 import { ErrorHandlerService } from '../../core/services/error-handler.service';
 
 @Component({
-    selector: 'app-user-update',
+    selector: 'app-group-update',
     templateUrl: './user-update.component.html',
     styleUrls: ['./user-update.component.css']
 })
@@ -37,6 +37,9 @@ export class UserUpdateComponent implements OnInit {
             enabled: new FormControl(''),
             authorities: new FormControl(''),
             // authoritiesList: new FormControl(''),
+            email: new FormControl(''),
+            bio: new FormControl(''),
+            image: new FormControl(''),
         });
 
         this.dialogConfig = {
@@ -71,6 +74,9 @@ export class UserUpdateComponent implements OnInit {
         this.userForm.controls['firstName'].setValue(this.user.firstName);
         this.userForm.controls['lastName'].setValue(this.user.lastName);
         this.userForm.controls['enabled'].setValue(this.user.enabled);
+        this.userForm.controls['email'].setValue(this.user.email);
+        this.userForm.controls['bio'].setValue(this.user.bio);
+        this.userForm.controls['image'].setValue(this.user.image);
     }
 
     public updateUser = (userFormValue) => {
